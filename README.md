@@ -1,6 +1,6 @@
 # Build instructions
 ---
-Arch Linux
+## Arch Linux
 type:
 ```bash
 qmake6 -makefile
