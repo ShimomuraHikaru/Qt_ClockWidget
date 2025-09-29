@@ -75,9 +75,27 @@ void ClockWidget::paintEvent(QPaintEvent* event)
 		float x = qSin((M_PI*2)/12*i);
 		float y = -qCos((M_PI*2)/12*i);
 
-		painter.drawLine(x*(widget_rect.width()/2-10), y*(widget_rect.width()/2-10), 
+		painter.drawLine(x*(widget_rect.width()/2-20), y*(widget_rect.height()/2-20), 
 				   x*widget_rect.width()/2, y*widget_rect.height()/2);
 	}
+
+	// draw secondary ticks
+	pen.setWidth(2);
+	painter.save();
+	painter.setPen(pen);
+	for(int i=0;i < 60;i++)
+	{
+		if(i%5 == 0)
+			continue;
+
+		float x = qSin((M_PI*2)/60*i);
+		float y = -qCos((M_PI*2)/60*i);
+
+		painter.drawLine(x*(widget_rect.width()/2-10), y*(widget_rect.height()/2-10), 
+				   x*widget_rect.width()/2, y*widget_rect.height()/2);
+	}
+	painter.restore();
+
 	// draw hands
 	drawHands(painter, widget_rect);
 	// draw second hand
